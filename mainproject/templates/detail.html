@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{% if request.user.is_authenticated %}
+
+<a class="btn btn-danger "href="{% url 'delete' book.id %}">Delete</a>
+<a class="btn btn-info "href="{% url 'update' book.id %}">Update</a>
+
+{% endif %}
+
+
+
+<h2>Here's the Detail for book you have chosen: </h2>
+
+<div class="card">
+        <h3 class="card-body">{{book.title}}</h3>
+        <p class="card-body">Author: {{book.author}}</p>
+        <p class="card-body">Released: {{book.publication_date}}</p>
+</div>
+<hr>
+<h2>Here's the reviews: </h2>
+{% if request.user.is_authenticated %}
+<a class="btn btn-info " href="{% url 'addreview' book.id %}">Add review</a>
+{% endif %}
+
+{% for rev in reviews%}
+<p class="card-body" > on {{rev.created_at}} => {{rev.content}}</p>
+<br>
+
+{%endfor%}
+
+{%endblock%}

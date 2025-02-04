@@ -1,0 +1,17 @@
+<nav class="navbar bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home'%}">Home page</a>
+      
+      {% if request.user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'addbook' %}"> Add Book</a>
+      <p>{{request.user}}</p>
+      <a class="navbar-brand" href="{% url 'user_logout' %}">logout</a>
+
+    {% else %}
+
+    <a class="navbar-brand" href="{% url 'user_register' %}">sign up</a>
+    <a class="navbar-brand" href="{% url 'user_login' %}">login</a>
+    {% endif %}
+      </div>
+    </div>
+  </nav>

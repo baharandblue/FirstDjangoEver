@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{% if request.user.is_authenticated %}
+<h2>Hello {{request.user |upper}} </h2>
+
+{% else %}
+<h2>Hello people </h2>
+{% endif %}
+<h3> lets see what we have for today's best-selling books : </h3>
+<div class="card">
+    {% for book in allBooks%}
+        <a class="card-body" href="{%url 'bookdetail' book.id %}">{{book.title}}</a>
+        <br>
+    {%endfor%}
+</div>
+<br>
+
+{%endblock%}

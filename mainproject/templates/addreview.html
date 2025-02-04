@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2> review for : {{ book.title }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> submit</button>
+  </form>
+  <a class="btn btn-info " href="{% url 'bookdetail' book.id %}">go back</a>
+{% endblock %}
